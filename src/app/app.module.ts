@@ -9,6 +9,7 @@ import { ApiService } from './service/api.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { MaterialModule } from './shared/material.module';
 
 @NgModule({
   declarations: [AppComponent, HomeComponent, DetailsComponent],
@@ -19,6 +20,7 @@ import { HttpClientModule } from '@angular/common/http';
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
+    MaterialModule,
   ],
   providers: [ApiService],
   bootstrap: [AppComponent],

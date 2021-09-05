@@ -1,1 +1,34 @@
-<p>details works!</p>
+<mat-card class="detail" *ngIf="crashDetails">
+  <div class="detailRow">
+    <p>Collision Id</p>
+    <p>{{ crashDetails.collision_id }}</p>
+  </div>
+  <div>
+    <p>First car</p>
+    <p>{{ crashDetails.vehicle_type_code1 }}</p>
+  </div>
+  <div>
+    <p>Second Car</p>
+    <p>{{ crashDetails.vehicle_type_code2 }}</p>
+  </div>
+  <div>
+    <p>Crash Date Time</p>
+    <p>{{ crashDetails.crash_date | date }} >{{ crashDetails.crash_time }}</p>
+  </div>
+  <div>
+    <p>Contrubuting Factor (vehicle 1)</p>
+    <p>{{ crashDetails.contributing_factor_vehicle_1 }}</p>
+  </div>
+  <div>
+    <p>Contrubuting Factor (vehicle 2)</p>
+    <p>{{ crashDetails.contributing_factor_vehicle_2 }}</p>
+  </div>
+  <div>
+    <p>Street</p>
+    <p>{{ crashDetails.on_street_name }}</p>
+  </div>
+  <div>
+    <p>Persons Killed</p>
+    <p>{{ crashDetails.number_of_persons_killed }}</p>
+  </div>
+</mat-card>

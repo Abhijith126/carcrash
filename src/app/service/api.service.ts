@@ -12,9 +12,17 @@ export class ApiService {
     return this.http.get(environment.crash_api);
   }
 
-  // https://data.cityofnewyork.us/resource/h9gi-nx95.json?crash_date=2014-01-21T00:00:00.000
+  public filterCrashesByDate(date: string) {
+    return this.http.get(`${environment.crash_api}?crash_date=${date}`);
+  }
 
-  // https://data.cityofnewyork.us/resource/h9gi-nx95.json?crash_date=2014-01-21T00:00:00.000&vehicle_type_code2=PASSENGER%20VEHICLE
+  public fetchPage(offset: number, limit: number) {
+    return this.http.get(
+      `${environment.crash_api}?&$offset=${offset}&$limit=${limit}`
+    );
+  }
 
-  // https://data.cityofnewyork.us/resource/h9gi-nx95.json?crash_date=2014-01-21T00:00:00.000&vehicle_type_code2=PASSENGER%20VEHICLE&$offset=0&$limit=5
+  public fetchDetail(crashid: number) {
+    return this.http.get(`${environment.crash_api}?collision_id=${crashid}`);
+  }
 }

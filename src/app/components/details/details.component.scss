@@ -1,0 +1,10 @@
+.detail {
+  display: flex;
+  flex-direction: column;
+  margin: 2% 5%;
+
+  .detailRow {
+    flex-direction: row;
+    padding: 1%;
+  }
+}

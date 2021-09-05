@@ -1,3 +1,58 @@
-<div *ngFor="let item of crashData | async">
-  <div>{{ item | json }}</div>
+<div class="homeCss">
+  <mat-form-field appearance="standard">
+    <mat-label>Filter by date</mat-label>
+    <input
+      matInput
+      (keyup)="applyFilter($event)"
+      placeholder="2021-04-14"
+      #input
+    />
+  </mat-form-field>
+
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <ng-container matColumnDef="firstCar">
+      <th mat-header-cell *matHeaderCellDef>First Car</th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.vehicle_type_code1 }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="secondCar">
+      <th mat-header-cell *matHeaderCellDef>Second Car</th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.vehicle_type_code2 }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="crashedDate">
+      <th mat-header-cell *matHeaderCellDef>Crashed Date</th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.crash_date | date }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="crashedTime">
+      <th mat-header-cell *matHeaderCellDef>Crash Time</th>
+      <td mat-cell *matCellDef="let element">{{ element.crash_time }}</td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr
+      mat-row
+      *matRowDef="let row; columns: displayedColumns"
+      [routerLink]="['/details', row.collision_id]"
+    ></tr>
+
+    <tr class="mat-row" *matNoDataRow>
+      <td class="mat-cell" colspan="4">
+        No crash data available for date "{{ input.value }}"
+      </td>
+    </tr>
+  </table>
+  <mat-paginator
+    [pageSizeOptions]="[50, 100, 200]"
+    showFirstLastButtons
+    aria-label="Select page to load car crash data"
+  >
+  </mat-paginator>
 </div>
