@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  crash_api: 'https://data.cityofnewyork.us/resource/h9gi-nx95.json',
 };
