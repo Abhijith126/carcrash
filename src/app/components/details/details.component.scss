@@ -4,7 +4,11 @@
   margin: 2% 5%;
 
   .detailRow {
+    display: flex;
     flex-direction: row;
-    padding: 1%;
+
+    p:first-child {
+      width: 30%;
+    }
   }
 }

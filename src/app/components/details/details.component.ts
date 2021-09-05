@@ -12,14 +12,9 @@ export class DetailsComponent implements OnInit {
   constructor(private apiService: ApiService, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
-    const id = this.route.snapshot.params.get('id');
-    console.log(id);
-    // this.route.queryParams.subscribe((params) => {
-    //   console.log(params);
-    //   let collisionId = params['id'];
-    //   this.apiService
-    //     .fetchDetail(collisionId)
-    //     .subscribe((data: any) => (this.crashDetails = data));
-    // });
+    const collisionId = this.route.snapshot.params.id;
+    this.apiService
+      .fetchDetail(collisionId)
+      .subscribe((data: any) => (this.crashDetails = data[0]));
   }
 }
